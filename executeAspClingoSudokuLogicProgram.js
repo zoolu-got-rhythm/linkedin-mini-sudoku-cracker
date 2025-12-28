@@ -16,7 +16,6 @@ export async function executeAspClingoSudokuLogicProgram() {
     clingo.stdout.on("data", (data) => {
       const s = data.toString();
       stdout += s;
-    //   console.log("stdout" + s);
     });
 
     clingo.stderr.on("data", (data) => {
@@ -35,12 +34,3 @@ export async function executeAspClingoSudokuLogicProgram() {
     });
   });
 }
-
-// (async () => {
-//   try {
-//     let result = await executeAspClingoSudokuLogicProgram();
-//     console.log("result is", result);
-//   } catch (error) {
-//     console.log("error is", error);
-//   }
-// })();
