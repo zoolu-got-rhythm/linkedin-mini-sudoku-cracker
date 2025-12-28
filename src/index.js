@@ -1,34 +1,13 @@
 import puppeteer from "puppeteer";
-import { executeAspClingoSudokuLogicProgram } from "./executeAspClingoSudokuLogicProgram.js";
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function parseClingo(output) {
-  // Create empty 6x6 grid
-  const grid = Array.from({ length: 6 }, () => Array(6).fill(null));
-
-  // Match assign(R,C,V)
-  const regex = /assign\((\d+),(\d+),(\d+)\)/g;
-  let match;
-
-  while ((match = regex.exec(output)) !== null) {
-    const r = Number(match[1]) - 1;
-    const c = Number(match[2]) - 1;
-    const v = Number(match[3]);
-
-    grid[r][c] = v;
-  }
-
-  return grid;
-}
+import { executeAspClingoSudokuLogicProgram } from "./utils/executeAspClingoSudokuLogicProgram.js";
+import { parseClingo } from "./utils/parseClingo.js";
 
 // run program
 (async () => {
   try {
-    const { stdout } = await executeAspClingoSudokuLogicProgram();
-    const solvedSudoku2dArray = parseClingo(stdout);
+
+    const { stdout: solvedSudokuClingoOutput } = await executeAspClingoSudokuLogicProgram();
+    const solvedSudoku2dArray = parseClingo(solvedSudokuClingoOutput);
 
     const browser = await puppeteer.launch({
       headless: false,

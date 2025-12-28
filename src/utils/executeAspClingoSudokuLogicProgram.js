@@ -2,7 +2,8 @@ import { spawn } from "child_process";
 
 export async function executeAspClingoSudokuLogicProgram() {
   const inputPathLinkedinMiniSudokuSolver = "linkedinMiniSudokuSolver.lp";
-  const inputPathLinkedinMiniSudokuCluesFacts = "linkedinMiniSudokuCluesFacts.lp";
+  const inputPathLinkedinMiniSudokuCluesFacts =
+    "linkedinMiniSudokuCluesFacts.lp";
 
   return new Promise((resolve, reject) => {
     const clingo = spawn("clingo", [
@@ -21,7 +22,6 @@ export async function executeAspClingoSudokuLogicProgram() {
     clingo.stderr.on("data", (data) => {
       const s = data.toString();
       stderr += s;
-    //   console.error("stderr" + s);
     });
 
     // clingo.on("error", (err) => reject(err)); // does this do anything? or is it needed?
