@@ -4,7 +4,8 @@ uses answer set programming (ASP) language to solve linkedin's mini sudoku and t
 
 ## installing
 
-install clingo (to run answer set programming logic programs (ASP)), i installed it on mac via brew
+install clingo (to run answer set programming logic programs (ASP)), i installed it on mac via brew.
+
 install node module dependencies (puppeteer)
 `npm i`
 
