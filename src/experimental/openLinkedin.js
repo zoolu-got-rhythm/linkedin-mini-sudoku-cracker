@@ -24,10 +24,12 @@ const loginDetails = JSON.parse(
   console.log("LinkedIn opened successfully");
 
   // Click accept on privacy/cookie consent
-  const acceptButton = await page.waitForSelector(
-    'button[action-type="ACCEPT"]',
-    { visible: true, timeout: 5000 }
-  ).catch(() => null);
+  const acceptButton = await page
+    .waitForSelector('button[action-type="ACCEPT"]', {
+      visible: true,
+      timeout: 5000,
+    })
+    .catch(() => null);
 
   if (acceptButton) {
     await acceptButton.click();
@@ -64,16 +66,26 @@ const loginDetails = JSON.parse(
   await page.type("#password", loginDetails.password);
   console.log("Entered password");
 
-  // Click sign in submit button
+  // Click sign in submit button and wait for navigation together
+  // await Promise.all([
+  // page.waitForNavigation({ waitUntil: "networkidle2" }),
   await page.click('button[type="submit"]');
-  console.log("Clicked sign in submit button");
+  // ]);
 
-  // Wait for login to complete then navigate to mini sudoku
-  await page.waitForNavigation({ waitUntil: "networkidle2" });
-  console.log("Login complete");
+  console.log("Clicked sign in submit button and login complete");
 
+  // Wait for navigation to complete after login
+  // await page.waitForNavigation({ waitUntil: "networkidle2" });
+
+  // Sleep before navigating
+  await new Promise((r) => setTimeout(r, 5000));
+
+  // Navigate to Mini Sudoku page
   await page.goto("https://www.linkedin.com/games/mini-sudoku/", {
     waitUntil: "networkidle2",
   });
-  console.log("Navigated to Mini Sudoku game");
+
+  console.log("Navigated to Mini Sudoku page");
+
+
 })();

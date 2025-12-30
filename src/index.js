@@ -23,7 +23,7 @@ import { parseClingo } from "./utils/parseClingo.js";
       .frames()
       .find(
         (f) =>
-          f.url() === "https://www.linkedin.com/games/view/mini-sudoku/desktop"
+          f.url() === "https://www.linkedin.com/games/view/mini-sudoku/"
       );
 
     if (!gameFrame) {
