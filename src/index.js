@@ -5,8 +5,8 @@ import { parseClingo } from "./utils/parseClingo.js";
 // run program
 (async () => {
   try {
-
-    const { stdout: solvedSudokuClingoOutput } = await executeAspClingoSudokuLogicProgram();
+    const { stdout: solvedSudokuClingoOutput } =
+      await executeAspClingoSudokuLogicProgram();
     const solvedSudoku2dArray = parseClingo(solvedSudokuClingoOutput);
 
     const browser = await puppeteer.launch({
@@ -63,7 +63,6 @@ import { parseClingo } from "./utils/parseClingo.js";
         await pressNumber(solutionNumberAtCurrentCell);
       }
     }
-
   } catch (error) {
     console.log("clingo asp error: ", error);
   }

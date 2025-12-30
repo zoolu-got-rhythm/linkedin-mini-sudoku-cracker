@@ -1,15 +1,20 @@
 import { spawn } from "child_process";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export async function executeAspClingoSudokuLogicProgram() {
-  const inputPathLinkedinMiniSudokuSolver = "linkedinMiniSudokuSolver.lp";
-  const inputPathLinkedinMiniSudokuCluesFacts =
-    "linkedinMiniSudokuCluesFacts.lp";
+  const solverPath = path.resolve(__dirname, "../linkedinMiniSudokuSolver.lp");
+
+  const cluesPath = path.resolve(
+    __dirname,
+    "../linkedinMiniSudokuCluesFacts.lp"
+  );
 
   return new Promise((resolve, reject) => {
-    const clingo = spawn("clingo", [
-      inputPathLinkedinMiniSudokuSolver,
-      inputPathLinkedinMiniSudokuCluesFacts,
-    ]);
+    const clingo = spawn("clingo", [solverPath, cluesPath]);
 
     let stdout = "";
     let stderr = "";
