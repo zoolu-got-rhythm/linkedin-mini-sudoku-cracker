@@ -22,11 +22,8 @@ create a `loginDetails.json` file in the project root with your linkedin credent
 
 ## running
 
-1. input the mini sudoku's clues into `src/asp/linkedinMiniSudokuCluesFacts.lp`, pre-existing example code is in the file already to show you the format it needs to be in.
-
-2. run the app:
 ```
 node src/index.js
 ```
 
-the app will open a browser, log into linkedin, navigate to the mini sudoku game, and automatically input the solved solution.
+the app will open a browser, log into linkedin, navigate to the mini sudoku game, read the puzzle clues automatically, solve it, and input the solution.
