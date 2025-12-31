@@ -21,6 +21,25 @@ export class SudokuGamePage {
         );
     }
 
+    async readClues() {
+        const cells = await this.page.$$(".sudoku-cell");
+        const clues = Array.from({ length: 6 }, () => Array(6).fill(null));
+
+        for (let i = 0; i < cells.length; i++) {
+            const text = await cells[i].evaluate((el) => el.textContent.trim());
+            const value = parseInt(text, 10);
+
+            if (!isNaN(value) && value >= 1 && value <= 6) {
+                const row = Math.floor(i / 6);
+                const col = i % 6;
+                clues[row][col] = value;
+            }
+        }
+
+        console.log("Read clues from puzzle");
+        return clues;
+    }
+
     async inputSolution(solution2dArray) {
         const cells = await this.page.$$(".sudoku-cell");
 

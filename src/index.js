@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { executeAspClingoSudokuLogicProgram } from "./utils/executeAspClingoSudokuLogicProgram.js";
 import { parseClingo } from "./utils/parseClingo.js";
+import { writeCluesFile } from "./utils/writeCluesFile.js";
 import { sleep } from "./utils/sleep.js";
 import { LinkedInLoginPage } from "./pages/LinkedInLoginPage.js";
 import { SudokuGamePage } from "./pages/SudokuGamePage.js";
@@ -33,6 +34,11 @@ const loginDetails = JSON.parse(
     await sudokuPage.navigate();
 
     try {
+        // Read clues from the puzzle page and write to clues file
+        const clues = await sudokuPage.readClues();
+        writeCluesFile(clues);
+
+        // Solve the puzzle using Clingo
         const { stdout: solvedSudokuClingoOutput } =
             await executeAspClingoSudokuLogicProgram();
         const solvedSudoku2dArray = parseClingo(solvedSudokuClingoOutput);
