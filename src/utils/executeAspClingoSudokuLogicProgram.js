@@ -29,8 +29,6 @@ export async function executeAspClingoSudokuLogicProgram() {
       stderr += s;
     });
 
-    // clingo.on("error", (err) => reject(err)); // does this do anything? or is it needed?
-
     clingo.on("close", (code) => {
       console.log(`Clingo exited with ${code}`);
       const result = { code, stdout, stderr };

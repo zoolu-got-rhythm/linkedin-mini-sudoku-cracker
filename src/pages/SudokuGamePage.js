@@ -32,7 +32,10 @@ export class SudokuGamePage {
         const cell = cells[cellIndex];
         const box = await cell.boundingBox();
 
-        await this.page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+        await this.page.mouse.click(
+          box.x + box.width / 2,
+          box.y + box.height / 2
+        );
         await this.pressNumber(solutionNumberAtCurrentCell);
       }
     }
