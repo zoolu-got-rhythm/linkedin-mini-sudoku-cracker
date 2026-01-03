@@ -35,7 +35,7 @@ export async function executeAspClingoSudokuLogicProgram() {
         clingo.on("close", (code) => {
             console.log(`Clingo exited with ${code}`);
             const result = { code, stdout, stderr };
-            if (code === 0 || code === 30) resolve(result);
+            if (code === 0 || code === 30 || code === 10) resolve(result);
             else reject(result);
         });
     });
