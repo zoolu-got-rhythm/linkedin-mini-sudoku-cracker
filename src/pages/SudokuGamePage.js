@@ -59,5 +59,6 @@ export class SudokuGamePage {
                 await this.pressNumber(solutionNumberAtCurrentCell);
             }
         }
+        console.log("Solution input complete");
     }
 }
