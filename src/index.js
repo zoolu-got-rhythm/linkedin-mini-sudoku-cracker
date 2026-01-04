@@ -43,7 +43,7 @@ const loginDetails = JSON.parse(
             await executeAspClingoSudokuLogicProgram();
         const solvedSudoku2dArray = parseClingo(solvedSudokuClingoOutput);
 
-        await sudokuPage.inputSolution(solvedSudoku2dArray);
+        await sudokuPage.inputSolution(solvedSudoku2dArray, clues);
 
         await sleep(3000);
         await browser.close();

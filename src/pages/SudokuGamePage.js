@@ -40,11 +40,15 @@ export class SudokuGamePage {
         return clues;
     }
 
-    async inputSolution(solution2dArray) {
+    async inputSolution(solution2dArray, clues) {
         const cells = await this.page.$$(".sudoku-cell");
 
         for (let row = 0; row < solution2dArray.length; row++) {
             for (let column = 0; column < solution2dArray[0].length; column++) {
+                if (clues[row][column] !== null) {
+                    continue;
+                }
+
                 const solutionNumberAtCurrentCell =
                     solution2dArray[row][column];
 
