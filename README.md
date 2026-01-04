@@ -2,6 +2,8 @@
 
 uses answer set programming (ASP) language to solve linkedin's mini sudoku and then uses puppeteer to automate the process of inputing the solved solution into linkedin via the browser.
 
+![Demo of linkedin mini sudoku cracker](linkedin-sudoku-crack.gif)
+
 ## installing
 
 install clingo (to run answer set programming logic programs):
