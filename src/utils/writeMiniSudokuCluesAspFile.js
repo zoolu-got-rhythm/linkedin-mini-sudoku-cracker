@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const CLUES_FILE_PATH = path.resolve(
     __dirname,
-    "../asp/linkedinMiniSudokuCluesFacts.lp",
+    "../answerSetProgrammingLogicProgramFiles/linkedinMiniSudokuCluesFacts.lp",
 );
 
 export function writeMiniSudokuCluesAspFile(clues2dArray) {

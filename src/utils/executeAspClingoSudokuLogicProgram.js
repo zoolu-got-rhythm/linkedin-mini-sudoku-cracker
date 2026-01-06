@@ -8,12 +8,12 @@ const __dirname = path.dirname(__filename);
 export async function executeAspClingoSudokuLogicProgram() {
     const solverPath = path.resolve(
         __dirname,
-        "../asp/linkedinMiniSudokuSolver.lp",
+        "../answerSetProgrammingLogicProgramFiles/linkedinMiniSudokuSolver.lp",
     );
 
     const cluesPath = path.resolve(
         __dirname,
-        "../asp/linkedinMiniSudokuCluesFacts.lp",
+        "../answerSetProgrammingLogicProgramFiles/linkedinMiniSudokuCluesFacts.lp",
     );
 
     return new Promise((resolve, reject) => {
