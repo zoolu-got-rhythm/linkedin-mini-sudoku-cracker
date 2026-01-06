@@ -1,5 +1,4 @@
 import puppeteer from "puppeteer";
-import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 import { executeAspClingoSudokuLogicProgram } from "./utils/executeAspClingoSudokuLogicProgram.js";
@@ -7,6 +6,7 @@ import { parseMiniSudokuClingoOutput } from "./utils/parseMiniSudokuClingoOutput
 import { writeMiniSudokuCluesAspFile } from "./utils/writeMiniSudokuCluesAspFile.js";
 import { sleep } from "./utils/sleep.js";
 import { parseWaitUntilCmdLineArg } from "./utils/parseWaitUntilCmdLineArg.js";
+import { validateLoginDetails } from "./utils/validateLoginDetails.js";
 import { LinkedInLoginPageAutomation } from "./pagesAutomation/LinkedInLoginPageAutomation.js";
 import { SudokuGamePageAutomation } from "./pagesAutomation/SudokuGamePageAutomation.js";
 
@@ -15,8 +15,8 @@ const __dirname = path.dirname(__filename);
 
 const waitUntilTime = parseWaitUntilCmdLineArg(process.argv.slice(2));
 
-const loginDetails = JSON.parse(
-    readFileSync(path.resolve(__dirname, "../loginDetails.json"), "utf-8"),
+const loginDetails = validateLoginDetails(
+    path.resolve(__dirname, "../loginDetails.json"),
 );
 
 (async () => {
