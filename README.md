@@ -51,3 +51,16 @@ node src/index.js
 ```
 
 the app will open a browser, log into linkedin, navigate to the mini sudoku game, read the puzzle clues automatically, solve it, and input the solution.
+
+### options
+
+**--wait-until \<time\>**
+
+delay inputting the solution until the puzzle timer reaches a specific time (format: `M:SS`):
+
+```
+node src/index.js --wait-until 2:05
+node src/index.js --wait-until=2:05
+```
+
+this waits until the timer shows 2 minutes and 5 seconds before entering the solution.

@@ -1,5 +1,5 @@
 // takes in clingo output as input and returns a 2d array of solved linkedin mini sudoku
-export function parseClingo(clingoOutput) {
+export function parseMiniSudokuClingoOutput(miniSudokuClingoOutput) {
     const grid = Array.from({ length: 6 }, () => Array(6).fill(null));
 
     // Parses assign(Row, Col, Value) predicates from Clingo output.
@@ -8,7 +8,7 @@ export function parseClingo(clingoOutput) {
     const regex = /assign\((\d+),(\d+),(\d+)\)/g;
     let match;
 
-    while ((match = regex.exec(clingoOutput)) !== null) {
+    while ((match = regex.exec(miniSudokuClingoOutput)) !== null) {
         const row = Number(match[1]) - 1; // convert from 1-indexed (ASP) to 0-indexed (JS)
         const col = Number(match[2]) - 1;
         const value = Number(match[3]);

@@ -1,6 +1,8 @@
 import { sleep } from "../utils/sleep.js";
 
-export class LinkedInLoginPage {
+// Selectors last tested: 2026-01-06
+// If login fails, LinkedIn may have changed their page structure
+export class LinkedInLoginPageAutomation {
     constructor(page) {
         this.page = page;
     }

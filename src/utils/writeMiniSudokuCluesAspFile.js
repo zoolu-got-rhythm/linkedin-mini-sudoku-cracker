@@ -10,7 +10,7 @@ const CLUES_FILE_PATH = path.resolve(
     "../asp/linkedinMiniSudokuCluesFacts.lp",
 );
 
-export function writeCluesFile(clues2dArray) {
+export function writeMiniSudokuCluesAspFile(clues2dArray) {
     const lines = [];
 
     for (let row = 0; row < clues2dArray.length; row++) {

@@ -1,4 +1,6 @@
-export class SudokuGamePage {
+// Selectors last tested: 2026-01-06
+// If automation fails, LinkedIn may have changed their page structure
+export class SudokuGamePageAutomation {
     constructor(page) {
         this.page = page;
     }
@@ -38,6 +40,30 @@ export class SudokuGamePage {
 
         console.log("Read clues from puzzle");
         return clues;
+    }
+
+    async getTimerSeconds() {
+        const timerText = await this.page.$eval(".timer-text", (el) =>
+            el.textContent.trim(),
+        );
+        const [minutes, seconds] = timerText.split(":").map(Number);
+        return minutes * 60 + seconds;
+    }
+
+    async waitUntilTime(targetTime) {
+        const [targetMinutes, targetSeconds] = targetTime.split(":").map(Number);
+        const targetTotalSeconds = targetMinutes * 60 + targetSeconds;
+
+        console.log(`Waiting until timer reaches ${targetTime}...`);
+
+        while (true) {
+            const currentSeconds = await this.getTimerSeconds();
+            if (currentSeconds >= targetTotalSeconds) {
+                console.log(`Timer reached ${targetTime}, proceeding with solution`);
+                break;
+            }
+            await new Promise((r) => setTimeout(r, 500));
+        }
     }
 
     async inputSolution(solution2dArray, clues) {
