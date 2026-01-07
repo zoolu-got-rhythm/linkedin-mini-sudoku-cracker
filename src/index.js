@@ -44,7 +44,9 @@ const loginDetails = validateLoginDetails(
         // Solve the puzzle using answer set programming language (ASP) with Clingo
         const { stdout: solvedSudokuClingoOutput } =
             await executeAspClingoSudokuLogicProgram();
-        const solvedSudoku2dArray = parseMiniSudokuClingoOutput(solvedSudokuClingoOutput);
+        const solvedSudoku2dArray = parseMiniSudokuClingoOutput(
+            solvedSudokuClingoOutput,
+        );
 
         if (waitUntilTime) {
             await sudokuPage.waitUntilTime(waitUntilTime);

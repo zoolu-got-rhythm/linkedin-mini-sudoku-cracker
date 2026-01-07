@@ -51,7 +51,9 @@ export class SudokuGamePageAutomation {
     }
 
     async waitUntilTime(targetTime) {
-        const [targetMinutes, targetSeconds] = targetTime.split(":").map(Number);
+        const [targetMinutes, targetSeconds] = targetTime
+            .split(":")
+            .map(Number);
         const targetTotalSeconds = targetMinutes * 60 + targetSeconds;
 
         console.log(`Waiting until timer reaches ${targetTime}...`);
@@ -59,7 +61,9 @@ export class SudokuGamePageAutomation {
         while (true) {
             const currentSeconds = await this.getTimerSeconds();
             if (currentSeconds >= targetTotalSeconds) {
-                console.log(`Timer reached ${targetTime}, proceeding with solution`);
+                console.log(
+                    `Timer reached ${targetTime}, proceeding with solution`,
+                );
                 break;
             }
             await new Promise((r) => setTimeout(r, 500));
