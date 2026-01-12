@@ -64,3 +64,7 @@ node src/index.js --wait-until=2:05
 ```
 
 this waits until the timer shows 2 minutes and 5 seconds before entering the solution.
+
+## last tested
+
+12-January-2026
